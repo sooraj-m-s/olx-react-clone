@@ -33,7 +33,7 @@ const Navbar = () => {
           <h1 className='font-bold text-lg ml-3'>+ SELL</h1>
         </div>
       </div>
-      {loginPop && <Login />}
+      {loginPop && <Login setLoginPop={setLoginPop}/>}
     </>
   )
 }
