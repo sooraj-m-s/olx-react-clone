@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import guitar from '../assets/guitar.png'
 import google from '../assets/google.png'
-import phone from '../assets/phone.png'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
 import { auth, googleProvider } from '../firebase/setup'
 import { useNavigate } from 'react-router-dom'
+import { MyContext } from './Navbar'
 import { toast } from 'react-toastify';
 
 
-const Login = ({ setLoginPop, setUser }) => {
+const Login = () => {
+    const {setLoginPop, setUser} = useContext(MyContext)
+
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

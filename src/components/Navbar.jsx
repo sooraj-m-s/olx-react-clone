@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import olx from '../assets/olx.png'
 import lens from '../assets/lens.png'
 import arrow from '../assets/arrow.png'
 import search from '../assets/search.png'
 import Login from './Login'
 import { toast } from 'react-toastify'
+
+export const MyContext = createContext()
 
 
 const Navbar = ({ setSearch, user, setUser }) => {
@@ -57,7 +59,9 @@ const Navbar = ({ setSearch, user, setUser }) => {
         ><h1 className='font-bold text-lg ml-3'>+ SELL</h1>
         </div>
       </div>
-      {loginPop && <Login setLoginPop={setLoginPop} setUser={setUser}/>}
+      <MyContext.Provider value={{setLoginPop, setUser}}>
+        {loginPop && <Login />}
+      </MyContext.Provider>
     </>
   )
 }
